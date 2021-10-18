@@ -19,10 +19,11 @@
 	crossorigin="anonymous">
 
 <!-- font awesome -->
-<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
-	integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
-	crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link
+	href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap"
+	rel="stylesheet">
+<script src="https://kit.fontawesome.com/a81368914c.js"></script>
 
 <!-- Cargando mi hoja de estilo -->
 <link href="style.css" rel="stylesheet" type="text/css" />
@@ -34,38 +35,57 @@
 
 <body>
 	<!-- Navbar-->
-	<nav class="navbar navbar-dark bg-dark">
+	<nav class="navbar navbar-light" style="background-color: #F4FDB1">
 		<div class="container-fluid">
-			<a class="navbar-brand links" href="index.html"><i
-				class="fas fa-fish"></i>Tienda Generica</a>
-		</div>
-	</nav>
-
-	<nav class="navbar navbar-dark bg-primary">
-		<div class="container">
-			<a class="navbar-brand links" href="listausuarios.jsp"> <i
+			<ul class="nav nav-tabs">
+			<li class="nav-item">
+			<a class="navbar-brand links" href="index.html"><i class="fas fa-shopping-basket"></i>Tienda Generica</a>
+			</li>
+			<li class="nav-item">
+			<a class="nav-link active" aria-current="page" href="listausuarios.jsp"> <i
 				class="fas fa-users"></i> Usuarios
-			</a> <a class="navbar-brand links" href="listaclientes.jsp"> <i
+			</a>
+			</li>
+			<li class="nav-item">
+			<a class="nav-link active" aria-current="page" href="listaclientes.jsp"> <i
 				class="fas fa-address-book"></i> Clientes
-			</a> <a class="navbar-brand links" href="listaproveedores.jsp"> <i
+			</a>
+			</li>
+			<li class="nav-item">
+			<a class="nav-link active" aria-current="page" href="listaproveedores.jsp"> <i
 				class="fas fa-truck"></i> Proveedores
-			</a> <a class="navbar-brand links" href="listaproductos.jsp"> <i
+			</a>
+			</li>
+			<li class="nav-item">
+			<a class="nav-link active" aria-current="page" href="listaproductos.jsp"> <i
 				class="fas fa-apple-alt"></i> Productos
-			</a> <a class="navbar-brand links" href="insertarventa.jsp"> <i
+			</a>
+			</li>
+			<li class="nav-item">
+			<a class="nav-link active" aria-current="page" href="insertarventa.jsp"> <i
 				class="fas fa-money-check-alt"></i> Ventas
-			</a> <a class="navbar-brand links" href="listareportes.jsp"> <i
+			</a>
+			</li>
+			<li class="nav-item">
+			<a class="nav-link active" aria-current="page" href="listareportes.jsp"> <i
 				class="fas fa-clipboard-list"></i> Reportes
 			</a>
+			</li>
+			</ul>
 		</div>
+		
+
+	<!-- Navbar modulos-->
+	
 	</nav>
 
-	<div style="padding-left: 5px">
-		<h1>
-			<i class="fas fa-search"></i> Buscando un Cliente
-		</h1>
-		<div class="container">
-
-
+	<div id="ponerimagen" style="display: flex;">
+		
+		<div class="container-fluid">
+			<h3>
+			Buscando un Cliente
+			</h3>
+	
 			<div id="error" class="alert alert-danger visually-hidden"
 				role="alert">Error al buscar el cliente, el cliente no existe</div>
 
@@ -77,10 +97,9 @@
 				<div class="input-group mb-3">
 					<span class="input-group-text" id="basic-addon4">Cliente a
 						buscar</span> <input type="text" class="form-control"
-						placeholder="Inserte username aqui..."
+						placeholder="Inserte cedula"
 						aria-describedby="basic-addon4" required id="cliente_search">
 				</div>
-				<br> <br> <br>
 				<div class="input-group mb-3">
 					<span class="input-group-text" id="basic-addon1">Cedula
 						Cliente</span> <input type="text" class="form-control"
@@ -117,48 +136,41 @@
 				</div>
 			</form>
 
-			<button type="button" class="btn btn-primary"
+			<button id="btn1" type="button" class="btn btn-primary"
 				onclick="enviar_cliente()">
 				<i class="fas fa-search"></i> Buscar Cliente
 			</button>
-
-			<br> <br> <br> <br> <br>
-
-			<h1>
-				<i class="fas fa-cogs"></i> Operaciones
-			</h1>
-			<div class="container">
-				<div class="row">
-					<button type="button" class="btn btn-success"
-						onclick="window.location.href='/insertarcliente.jsp'">
-						<i class="fas fa-plus-circle"></i> Agregar Cliente
-					</button>
-					<button type="button" class="btn btn-danger"
-						onclick="window.location.href='/eliminarcliente.jsp'">
-						<i class="fas fa-trash"></i> Eliminar Cliente
-					</button>
-					<button type="button" class="btn btn-warning"
-						onclick="window.location.href='/actualizarcliente.jsp'">
-						<i class="fas fa-pen-alt"></i> Actualizar Cliente
-					</button>
-					<button type="button" class="btn btn-primary"
-						onclick="window.location.href='/buscarcliente.jsp'">
-						<i class="fas fa-search"></i> Buscar un Cliente
-					</button>
-					<button type="button" class="btn btn-primary"
-						onclick="window.location.href='/listaclientes.jsp'">
-						<i class="fas fa-search"></i> Listar Todos los Clientes
-					</button>
-				</div>
-			</div>
+			
 		</div>
-
+		<div id="botonesUsuarios" class="container-fluid">
+				<button id="btn1" type="button" class="btn btn-success"
+					onclick="window.location.href='/insertarcliente.jsp'">
+					<i class="fas fa-plus-circle"></i> Agregar cliente
+				</button>
+				<button id="btn2" type="button" class="btn btn-danger"
+					onclick="window.location.href='/eliminarcliente.jsp'">
+					<i class="fas fa-trash"></i> Eliminar cliente
+				</button>
+				<button id="btn3" type="button" class="btn btn-warning"
+					onclick="window.location.href='/actualizarcliente.jsp'">
+					<i class="fas fa-pen-alt"></i> Actualizar cliente
+				</button>
+				<button id="btn4" class="btn btn-primary"
+					onclick="window.location.href='/buscarcliente.jsp'">
+					<i class="fas fa-search"></i> Buscar un cliente
+				</button>
+				<button id="btn5" type="button" class="btn btn-primary"
+					onclick="window.location.href='/listaclientes.jsp'">
+					<i class="fas fa-search"></i> Listar todos los clientes
+				</button>
+			
+		</div>
 	</div>
-	<nav class="navbar fixed-bottom navbar-dark bg-dark">
-		<div class="row justify-content-between">
+	<nav class="navbar navbar-light" style="background-color: #F4FDB1">
+		<div class="row justify-content-bottom">
 			<div class="col-4">
-				<a class="navbar-brand links" href="#"><i class="fas fa-code"></i>
-					Diseñado por Grupo 10 <i class="fas fa-code-branch"></i></a>
+				<a class="navbar-brand links" href="#">
+					Diseñado por Grupo 10 </a>
 			</div>
 		</div>
 	</nav>

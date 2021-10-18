@@ -143,24 +143,24 @@
 		</div>
 		<div id="botonesUsuarios" class="container-fluid">
 				<button id="btn1" type="button" class="btn btn-success"
-					onclick="window.location.href='/insertarusuario.jsp'">
-					<i class="fas fa-plus-circle"></i> Agregar usuario
+					onclick="window.location.href='/insertarcliente.jsp'">
+					<i class="fas fa-plus-circle"></i> Agregar cliente
 				</button>
 				<button id="btn2" type="button" class="btn btn-danger"
-					onclick="window.location.href='/eliminarusuario.jsp'">
-					<i class="fas fa-trash"></i> Eliminar usuario
+					onclick="window.location.href='/eliminarcliente.jsp'">
+					<i class="fas fa-trash"></i> Eliminar cliente
 				</button>
 				<button id="btn3" type="button" class="btn btn-warning"
-					onclick="window.location.href='/actualizarusuario.jsp'">
-					<i class="fas fa-pen-alt"></i> Actualizar usuario
+					onclick="window.location.href='/actualizarcliente.jsp'">
+					<i class="fas fa-pen-alt"></i> Actualizar cliente
 				</button>
 				<button id="btn4" class="btn btn-primary"
-					onclick="window.location.href='/buscarusuario.jsp'">
-					<i class="fas fa-search"></i> Buscar un usuario
+					onclick="window.location.href='/buscarcliente.jsp'">
+					<i class="fas fa-search"></i> Buscar un cliente
 				</button>
 				<button id="btn5" type="button" class="btn btn-primary"
-					onclick="window.location.href='/listausuarios.jsp'">
-					<i class="fas fa-search"></i> Listar todos los usuarios
+					onclick="window.location.href='/listaclientes.jsp'">
+					<i class="fas fa-search"></i> Listar todos los clientes
 				</button>
 			
 		</div>

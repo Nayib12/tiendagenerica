@@ -146,7 +146,7 @@ function reporte_lista_usuarios() {
 	xmlhttp.onreadystatechange = function() {
 		if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
 			var usuarios = JSON.parse(xmlhttp.responseText);
-			var tbltop = "<table class='table table-dark table-striped'><tr><th>Cedula</th><th>Email</th><th>Nombre</th><th>Password</th><th>Usuario</th></tr>";
+			var tbltop = "<table class='table table-hover'><tr><th>Cedula</th><th>Email</th><th>Nombre</th><th>Password</th><th>Usuario</th></tr>";
 			var main = "";
 			for (i = 0; i < usuarios.length; i++) {
 				main += "<tr><td>" + usuarios[i].cedula_usuario
@@ -171,7 +171,7 @@ function reporte_lista_usuarios() {
 		xmlhttp.onreadystatechange = function() {
 			if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
 				var clientes = JSON.parse(xmlhttp.responseText);
-				var tbltop = "<table class='table table-dark table-striped'><tr><th>Cedula Cliente</th><th>Direccion Cliente</th><th>Email Cliente</th><th>Nombre Cliente</th><th>Telefono Cliente</th></tr>";
+				var tbltop = "<table class='table table-hover'><tr><th>Cedula Cliente</th><th>Direccion Cliente</th><th>Email Cliente</th><th>Nombre Cliente</th><th>Telefono Cliente</th></tr>";
 				var main = "";
 				for (i = 0; i < clientes.length; i++) {
 					main += "<tr><td>" + clientes[i].cedula_cliente
@@ -199,7 +199,7 @@ function reporte_lista_usuarios() {
 		xmlhttp.onreadystatechange = function() {
 			if (xmlhttp.status === 200) {
 				var ventas = JSON.parse(xmlhttp.responseText);
-				var tbltop = "<table class='table table-dark table-striped'><tr><th>Cedula Cliente</th><th>Nombre Cliente</th><th>Codigo Venta</th><th>Valor Total Venta</th></tr>";
+				var tbltop = "<table class='table table-hover'><tr><th>Cedula Cliente</th><th>Nombre Cliente</th><th>Codigo Venta</th><th>Valor Total Venta</th></tr>";
 				var main = "";
 				for (i = 0; i < ventas.length; i++) {
 					var cliente = null;
