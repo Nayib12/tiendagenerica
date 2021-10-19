@@ -521,21 +521,114 @@
 		}
 		
 		function registrar_venta(){
-			var formDataVenta = new FormData();
-			formDataVenta.append("codigo_venta", document.getElementById("cons_venta").value);
-			formDataVenta.append("cedula_cliente", document.getElementById("cedula_cliente").value);
-			formDataVenta.append("cedula_usuario", document.getElementById("cedula_usuario").value);
-			formDataVenta.append("iva_venta", document.getElementById("total_iva").value);
-			formDataVenta.append("total_venta", document.getElementById("total_venta").value);
-			formDataVenta.append("valor_venta", document.getElementById("total_coniva").value);
-			var xhr = new XMLHttpRequest();
-
-			xhr.open("POST", 'http://localhost:8080/registrarventa');
-			xhr.send(formDataVenta);
-			window.alert("Venta registrada");
-			location.reload();
+						
 			
-		}	   
+			var conta_detalle_1 = parseInt(document.getElementById("valort_1").value);
+			var conta_detalle_2 = parseInt(document.getElementById("valort_2").value);
+			var conta_detalle_3 = parseInt(document.getElementById("valort_3").value);
+			
+			if (conta_detalle_1==0 && conta_detalle_2==0 && conta_detalle_3==0){
+				window.alert("Ingrese al menos un producto");
+				location.reload();
+			}else{
+				var formDataVenta = new FormData();
+				formDataVenta.append("codigo_venta", document.getElementById("cons_venta").value);
+				formDataVenta.append("cedula_cliente", document.getElementById("cedula_cliente").value);
+				formDataVenta.append("cedula_usuario", document.getElementById("cedula_usuario").value);
+				formDataVenta.append("iva_venta", document.getElementById("total_iva").value);
+				formDataVenta.append("total_venta", document.getElementById("total_venta").value);
+				formDataVenta.append("valor_venta", document.getElementById("total_coniva").value);
+				var xhr = new XMLHttpRequest();
+
+				xhr.open("POST", 'http://localhost:8080/registrarventa');
+				xhr.send(formDataVenta);
+				window.alert("Venta registrada");
+				
+												
+				var conta_venta = new XMLHttpRequest();
+				conta_venta.open('GET', 'http://localhost:8080/contardetalleventa', false);
+				conta_venta.send(null);
+				var contador_venta = null;
+				if (conta_venta.status == 200){					
+					contador_venta = parseInt(conta_venta.responseText)+1;
+					console.log(contador_venta);
+				}
+									
+			
+				
+				var venta1 = parseInt(document.getElementById("valort_1").value);
+				var venta2 = parseInt(document.getElementById("valort_2").value);
+				var venta3 = parseInt(document.getElementById("valort_3").value);
+				
+				
+				var totaliva1 = venta1 * 0.19
+				var totalconiva1 = venta1 + totaliva1;
+				
+				var totaliva2 = venta2 * 0.19
+				var totalconiva2 = venta2 + totaliva2;
+				
+				var totaliva3 = venta3 * 0.19
+				var totalconiva3 = venta3 + totaliva3;
+				
+				var xhr1 = new XMLHttpRequest();
+				var xhr2 = new XMLHttpRequest();
+				var xhr3 = new XMLHttpRequest();
+			
+				
+				if(document.getElementById("nom_prod1").value != ""){				
+					var primer_producto = new FormData();
+					primer_producto.append("codigo_detalle_venta", contador_venta);
+					primer_producto.append("cantidad_producto", parseInt(document.getElementById("cant_1").value));
+					primer_producto.append("codigo_producto", parseInt(document.getElementById("cod_prod1").value));
+					primer_producto.append("codigo_venta", parseInt(document.getElementById("cons_venta").value));
+					primer_producto.append("valor_total", parseFloat(document.getElementById("valort_1").value));
+					primer_producto.append("valor_venta", totalconiva1);
+					primer_producto.append("valor_iva", totaliva1);
+					
+					xhr1.open("POST", 'http://localhost:8080/registrardetalleventa');
+					xhr1.send(primer_producto);
+					window.alert("Registre venta producto 1");
+					contador_venta++;
+				}
+				
+				if(document.getElementById("nom_prod2").value != ""){
+					var segundo_producto= new FormData();
+					segundo_producto.append("codigo_detalle_venta", contador_venta);
+					segundo_producto.append("cantidad_producto", parseInt(document.getElementById("cant_2").value));
+					segundo_producto.append("codigo_producto", parseInt(document.getElementById("cod_prod2").value));
+					segundo_producto.append("codigo_venta", parseInt(document.getElementById("cons_venta").value));
+					segundo_producto.append("valor_total", parseFloat(document.getElementById("valort_2").value));
+					segundo_producto.append("valor_venta", totalconiva2);
+					segundo_producto.append("valor_iva", totaliva2);
+					
+					xhr2.open("POST", 'http://localhost:8080/registrardetalleventa');
+					xhr2.send(segundo_producto);
+					window.alert("Registre venta producto 2");
+					contador_venta++;
+				}
+				
+				if(document.getElementById("nom_prod3").value != ""){
+					var tercer_producto= new FormData();
+					tercer_producto.append("codigo_detalle_venta", contador_venta);
+					tercer_producto.append("cantidad_producto", parseInt(document.getElementById("cant_3").value));
+					tercer_producto.append("codigo_producto", parseInt(document.getElementById("cod_prod3").value));
+					tercer_producto.append("codigo_venta", parseInt(document.getElementById("cons_venta").value));
+					tercer_producto.append("valor_total", parseFloat(document.getElementById("valort_3").value));
+					tercer_producto.append("valor_venta", totalconiva3);
+					tercer_producto.append("valor_iva", totaliva2);
+					
+					xhr3.open("POST", 'http://localhost:8080/registrardetalleventa');
+					xhr3.send(tercer_producto);
+					window.alert("Registre venta producto 3");
+					contador_venta++;
+				}
+				
+				
+				
+			}
+			
+			
+		}//fin registrar venta	   
 	</script>
 
 </body>

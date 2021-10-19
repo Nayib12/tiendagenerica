@@ -40,6 +40,12 @@ public class VentasController {
 		return Dao.listaDeVentas();
 	}
 	
+	@GetMapping("/listarventascliente")
+	public ArrayList<VentasVO> listaDeVentasCliente(Integer cedula_cliente) {
+		VentasDAO Dao = new VentasDAO();
+		return Dao.listaDeVentasCliente(cedula_cliente);
+	}
+	
 		
 	
 	@DeleteMapping("/eliminarventa")

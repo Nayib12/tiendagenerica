@@ -293,5 +293,52 @@ public class Detalle_VentasDAO {
 
 		return numero;
 	}// contar ventas
+	
+	
+	public int sumardetalleVenta(Integer cedula_cliente) {
+		// instancia de conexion
+		Conexion conex = new Conexion();
+		int suma=0;
+		
+		try {
+			// inicializando sentencia
+			Statement estatuto = conex.getConnection().createStatement();
+
+			// String con la sentencia a ejecutar
+			String sentencia = "select sum(valor_venta) from ventas where cedula_cliente="+ cedula_cliente;
+
+			// ejecuta la sentencia y la guarda en un resultset
+			ResultSet res= estatuto.executeQuery(sentencia);
+			
+			
+			// cree un objeto basado en la clase entidad con los datos encontrados
+			if (res.next()) {
+				//si encontro algo lo guarda
+				suma = res.getInt(1);
+			}
+
+			// verificación por consola de la sentencia
+			System.out.println("El cliente compro " + suma);
+
+			// cerrando sentencia y conexión
+			estatuto.close();
+			conex.desconectar();
+
+		} catch (SQLException e) {
+			// si hay un error en el sql mostrarlo
+			System.out.println("------------------- ERROR --------------");
+			System.out.println("No se pudo sumar  las ventas");
+			System.out.println(e.getMessage());
+			System.out.println(e.getErrorCode());
+		} catch (Exception e) {
+			// si hay cualquier otro error mostrarlo
+			System.out.println("------------------- ERROR --------------");
+			System.out.println("No se pudo sumar las ventas");
+			System.out.println(e.getMessage());
+			System.out.println(e.getLocalizedMessage());
+		}
+
+		return suma;
+	}// contar ventas
 
 }

@@ -116,6 +116,57 @@ public class VentasDAO {
 	 * 
 	 * @return
 	 */
+	
+	public ArrayList<VentasVO> listaDeVentasCliente(Integer cedula_cliente) {
+		// lista que contendra el o los proveedores obtenidos
+		ArrayList<VentasVO> listaventas = new ArrayList<VentasVO>();
+
+		// instancia de la conexión
+		Conexion conex = new Conexion();
+
+		try {
+			// prepare la sentencia en la base de datos
+			PreparedStatement consulta = conex.getConnection().prepareStatement("SELECT * FROM ventas Where cedula_cliente="+cedula_cliente);
+
+			// ejecute la sentencia
+			ResultSet res = consulta.executeQuery();
+
+			// cree un objeto para cada encontrado en la base de datos basado en la clase
+			// entidad con los datos encontrados
+			while (res.next()) {
+				VentasVO Venta = new VentasVO();
+				Venta.setCodigo_venta(Integer.parseInt(res.getString("codigo_venta")));
+				Venta.setCedula_cliente(Integer.parseInt(res.getString("cedula_cliente")));
+				Venta.setCedula_usuario(Integer.parseInt(res.getString("cedula_usuario")));
+				Venta.setIva_venta(Double.parseDouble(res.getString("iva_venta")));
+				Venta.setTotal_venta(Double.parseDouble(res.getString("total_venta")));
+				Venta.setValor_venta(Double.parseDouble(res.getString("valor_venta")));
+
+				listaventas.add(Venta);
+			}
+
+			// cerrar resultado, sentencia y conexión
+			res.close();
+			consulta.close();
+			conex.desconectar();
+
+		} catch (SQLException e) {
+			// si hay un error en el sql mostrarlo
+			System.out.println("------------------- ERROR --------------");
+			System.out.println("No se pudo consultar todos los productos");
+			System.out.println(e.getMessage());
+			System.out.println(e.getErrorCode());
+		} catch (Exception e) {
+			// si hay cualquier otro error mostrarlo
+			System.out.println("------------------- ERROR --------------");
+			System.out.println("No se pudo consultar todos los pproductos");
+			System.out.println(e.getMessage());
+			System.out.println(e.getLocalizedMessage());
+		}
+
+		return listaventas;
+	}// mostrar ventas
+	
 	public ArrayList<VentasVO> listaDeVentas() {
 		// lista que contendra el o los proveedores obtenidos
 		ArrayList<VentasVO> listaventas = new ArrayList<VentasVO>();

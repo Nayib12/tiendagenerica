@@ -62,6 +62,14 @@ public class Detalle_Ventas_Controller {
 		return numero;
 	}
 	
+	@GetMapping("/sumardetalleventa")
+	public int sumardetalleVenta( Integer cedula_cliente) {
+		int suma;
+		Detalle_VentasDAO Dao = new Detalle_VentasDAO();
+		suma= Dao.sumardetalleVenta(cedula_cliente);
+		return suma;
+	}
+	
 	
 
 }
